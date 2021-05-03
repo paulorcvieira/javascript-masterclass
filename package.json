@@ -1,0 +1,15 @@
+{
+  "name": "master-class",
+  "version": "1.0.0",
+  "description": "Master Class JavaScript - Database Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["master-class", "javascript", "database-manager"],
+  "author": {
+    "name": "Paulo Vieira",
+    "github": "https://github.com/paulorcvieira"
+  },
+  "license": "MIT"
+}
