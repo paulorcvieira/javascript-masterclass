@@ -1,4 +1,6 @@
-# Database manager (SGBD) with SQL suport
+# Javascript MasterClass - challenges
+
+## Database manager (SGBD) with SQL suport
 
 ### **CREATE TABLE**
 
@@ -485,7 +487,8 @@ console.log(JSON.stringify(database.execute("select name, age from author"), und
 ### Conteúdo abordado neste exercício
 
 • class
-• constructor • method
+• constructor
+• method
 • new
 
 ## Desafio 10
@@ -558,3 +561,21 @@ Crie um atraso no retorno da função execute por meio de setTimeout e utilize u
 • Promise
 • Promise.all
 • new
+
+## Desafio 12
+
+### Objetivo
+
+Utilize async/await para tratar as chamadas para as promises.
+
+### Instruções
+
+1. Crie uma função utilizando async.
+2. Invoque cada uma das funções execute utilizando await incluindo o Promise.all.
+3. Envolva as chamadas em um bloco try/catch para tratar as exceções.
+
+### Conteúdo abordado neste exercício
+
+• Async/Await
+• Promises
+• try/catch
