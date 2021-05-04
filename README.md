@@ -115,7 +115,7 @@ Crie dois métodos no objeto "database" chamados de "createTable" e "execute". O
 
 ### Cenário
 ```SQL
-database.execute("create table author (id number, name string, age number, ci ty string, state string, country string)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
 ```
 
 ### Resultado
@@ -194,9 +194,9 @@ insert into author (id, name, age) values (2, Linus Torvalds, 47) insert into au
 
 ### Cenário
 ```Javascript
-database.execute("create table author (id number, name string, age number, ci ty string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crock ford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvald s, 47)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
 ```
 
@@ -263,9 +263,9 @@ selecionadas.
 
 ### Cenário
 ```Javascript
-database.execute("create table author (id number, name string, age number, ci ty string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crock ford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvald s, 47)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
 database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
 database.execute("select name, age from author");
 database.execute("select name, age from author where id = 1");
@@ -316,10 +316,10 @@ delete from author where id = 2
 
 ### Cenário
 ```Javascript
-database.execute("create table author (id number, name string, age number, ci ty string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crock ford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvald s, 47)");
-database.execute("insert into author (id, name, age) values (3, Martin Fowler , 54)");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
 database.execute("delete from author where id = 2");
 database.execute("select name, age from author");
 ```
@@ -364,11 +364,12 @@ comando dinamicamente.
 
 ### Cenário
 ```Javascript
-database.execute("create table author (id number, name string, age number, ci ty string, state string, country string)");
-database.execute("insert into author (id, name, age) values (1, Douglas Crock ford, 62)");
-database.execute("insert into author (id, name, age) values (2, Linus Torvald s, 47)");
-database.execute("insert into author (id, name, age) values (3, Martin Fowler , 54)");
-database.execute("delete from author where id = 2"); database.execute("select name, age from author");
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
+database.execute("delete from author where id = 2");
+database.execute("select name, age from author");
 ```
 
 ### Resultado
@@ -389,4 +390,39 @@ Dentro do método "parse", você pode iterar sobre o Map de "commands" com for/o
 • for/of
 • Destructuring
 • Constructor Function
+• new
+
+## Desafio 09
+
+### Objetivo
+Migre as funções construtoras "DatabaseError" e "Parser" e o objeto "database" para classes.
+
+### Instruções
+1. Migre a função construtora "DatabaseError" para uma classe.
+2. Migre a função construtora "Parser" para uma classe.
+3. Migre o objeto "database" para uma classe.
+4. Instancie a classe "Database" no objeto "database".
+
+### Cenário
+```Javascript
+let database = new Database();
+database.execute("create table author (id number, name string, age number, city string, state string, country string)");
+database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
+database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
+database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
+database.execute("delete from author where id = 2");
+console.log(JSON.stringify(database.execute("select name, age from author"), undefined, "  "));
+```
+
+### Resultado
+```JSON
+[
+  { "name": "Douglas Crockford", "age": "62" },
+  { "name": "Martin Fowler", "age": "54" }
+]
+```
+
+### Conteúdo abordado neste exercício
+• class
+• constructor • method
 • new
