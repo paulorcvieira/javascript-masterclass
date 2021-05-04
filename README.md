@@ -1,4 +1,4 @@
-# Javascript MasterClass - challenges
+# Javascript MasterClass - Challenges
 
 ## Database manager (SGBD) with SQL suport
 
