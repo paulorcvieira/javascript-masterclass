@@ -56,6 +56,20 @@ const database = {
     });
     return rows;
   },
+  delete(statement) {
+    const regexp = /^delete\sfrom\s([a-z]+)(?:\swhere\s(.+))?/i;
+    const parsedStatement = statement.match(regexp);
+    let [, tableName, whereClause] = parsedStatement;
+    if (whereClause) {
+      let [columnWhere, valueWhere] = whereClause.split(" = ");
+      return this.tables[tableName].data = this.tables[tableName].data
+        .filter(function (row) {
+          return row[columnWhere] !== valueWhere;
+        });
+    } else {
+      return this.tables[tableName].data = [];
+    }
+  },
   execute(statement) {
     const regexpCreate = /^create\stable/i;
     if (regexpCreate.test(statement)) {
@@ -69,6 +83,10 @@ const database = {
     if (regexpSelect.test(statement)) {
       return this.select(statement);
     }
+    const regexpDelete = /^delete\sfrom/i;
+    if (regexpDelete.test(statement)) {
+      return this.delete(statement);
+    }
     const message = `Syntax error: "${statement}"`;
     throw new DatabaseError(statement, message);
   }
@@ -78,8 +96,7 @@ try {
   database.execute("insert into author (id, name, age) values (1, Douglas Crockford, 62)");
   database.execute("insert into author (id, name, age) values (2, Linus Torvalds, 47)");
   database.execute("insert into author (id, name, age) values (3, Martin Fowler, 54)");
-  console.log(JSON.stringify(database.execute("select name, age from author"), undefined, "  "));
-  console.log(JSON.stringify(database.execute("select name, age from author where id = 1"), undefined, "  "));
+  console.log(JSON.stringify(database.execute("delete from author where id = 2"), undefined, "  "));
 } catch (err) {
   console.error(err.message);
 }
